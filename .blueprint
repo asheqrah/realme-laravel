@@ -1,0 +1,27 @@
+created:
+    - database/factories/ProductFactory.php
+    - database/factories/DeviceFactory.php
+    - database/factories/AreaFactory.php
+    - database/factories/ShopFactory.php
+    - database/factories/GiftFactory.php
+    - database/factories/LotteryFactory.php
+    - database/migrations/2025_03_05_141852_create_products_table.php
+    - database/migrations/2025_03_05_141853_create_devices_table.php
+    - database/migrations/2025_03_05_141854_create_areas_table.php
+    - database/migrations/2025_03_05_141855_create_shops_table.php
+    - database/migrations/2025_03_05_141856_create_gifts_table.php
+    - database/migrations/2025_03_05_141857_create_lotteries_table.php
+    - app/Models/Product.php
+    - app/Models/Device.php
+    - app/Models/Area.php
+    - app/Models/Shop.php
+    - app/Models/Gift.php
+    - app/Models/Lottery.php
+models:
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
+    Product: { name: string, imei: string, color: string, status: string, price: 'number nullable', imei2: 'string nullable', relationships: { belongsTo: 'Device, Shop' } }
+    Device: { name: string }
+    Area: { name: string, code: string }
+    Shop: { name: string, code: string, password: string, role: string, housefull: 'boolean nullable', cashback: 'number nullable', relationships: { belongsTo: Area } }
+    Gift: { name: string, cashback: number, quantity: number }
+    Lottery: { shop_name: string, shop_code: string, area_name: string, customer_name: string, customer_phone: string, imei: string, is_settled: boolean, settled_at: 'datetime nullable', relationships: { belongsTo: Gift } }

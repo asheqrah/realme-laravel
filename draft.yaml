@@ -1,0 +1,45 @@
+models:
+  Product:
+    name: string
+    imei: string
+    color: string
+    status: string
+    price: number nullable
+    imei2: string nullable
+    relationships:
+      belongsTo: Device, Shop
+
+  Device:
+    name: string
+    
+  Area:
+    name: string
+    code: string
+
+  Shop:
+    name: string
+    code: string
+    password: string
+    role: string
+    housefull: boolean nullable
+    cashback: number nullable
+    relationships:
+      belongsTo: Area
+
+  Gift:
+    name: string
+    cashback: number
+    quantity: number
+    
+  Lottery:
+    shop_name: string
+    shop_code: string
+    area_name: string
+    customer_name: string
+    customer_phone: string
+    imei: string
+    is_settled: boolean
+    settled_at: datetime nullable
+    relationships:
+      belongsTo: Gift
+
